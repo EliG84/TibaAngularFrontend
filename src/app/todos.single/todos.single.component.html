@@ -1,0 +1,25 @@
+<td>{{ index }}</td>
+<td>
+  <input type="checkbox" [(ngModel)]="todo.done" (change)="onClickDone()" />
+</td>
+<td>{{ todo.name }}</td>
+<td>{{ todo.type }}</td>
+<td>{{ todo.created | date }}</td>
+<td>{{ todo.dueDate | date }}</td>
+<td>{{ todo.daysLeft }}</td>
+<td>
+  <button
+    class="btn btn-outline-warning border border-0"
+    (click)="onClickEdit()"
+  >
+    Edit
+  </button>
+</td>
+<td>
+  <button
+    class="btn btn-outline-danger border border-0"
+    (click)="onClickDelete(todo._id)"
+  >
+    Delete
+  </button>
+</td>

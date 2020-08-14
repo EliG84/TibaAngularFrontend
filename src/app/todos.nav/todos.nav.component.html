@@ -1,0 +1,18 @@
+<div class="d-flex flex-column flex-lg-row justify-content-around">
+  <input
+    type="text"
+    placeholder="Search..."
+    [(ngModel)]="searchInput"
+    (input)="onInputSearch()"
+  />
+  <select
+    class="form-control col-2"
+    [(ngModel)]="sortByInput"
+    (change)="onChangeSort()"
+  >
+    <option [ngValue]="defaulSelected" [disabled]="true">Sort By</option>
+    <option value="name">Name</option>
+    <option value="daysLeft">Days Left</option>
+    <option value="type">Type</option>
+  </select>
+</div>

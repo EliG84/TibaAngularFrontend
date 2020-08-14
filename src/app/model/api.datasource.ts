@@ -9,6 +9,7 @@ export class ApiDataSource {
   private singleUrl: string = 'http://localhost:3001/todos/single/';
   private addUpdateUrl: string = 'http://localhost:3001/todos/addOrUpdate';
   private deleteUrl: string = 'http://localhost:3001/todos/delete/';
+  private searchUrl: string = 'http://localhost:3001/todos/search/';
 
   constructor(private http: HttpClient) {}
 
@@ -16,12 +17,16 @@ export class ApiDataSource {
     return this.http.get<Todo[]>(this.allUrl);
   }
 
+  search(s: string): Observable<Todo[]> {
+    return this.http.get<Todo[]>(this.searchUrl + s);
+  }
+
   getSingle(id: string): Observable<Todo> {
     return this.http.get<Todo>(this.singleUrl + id);
   }
 
   addOrUpdate(obj: Todo): Observable<Todo[]> {
-    return this.http.post<Todo[]>(this.addUpdateUrl, { obj });
+    return this.http.post<Todo[]>(this.addUpdateUrl, obj);
   }
 
   delete(id: string): Observable<Todo[]> {

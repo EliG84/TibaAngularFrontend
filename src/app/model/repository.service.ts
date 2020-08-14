@@ -7,19 +7,35 @@ import { ApiDataSource } from './api.datasource';
 @Injectable()
 export class DataRepository {
   private todos: Todo[] = new Array<Todo>();
-  private search = (n: string) =>
-    this.todos.filter((item) =>
-      item.name.toLocaleLowerCase().includes(n.toLocaleLowerCase())
-    );
-  private sort = (sortBy: string, direction?: boolean) =>
+  private sort = (sortBy: string, direction: boolean) =>
     _.orderBy(this.todos, [sortBy], [direction ? true : false]);
 
   constructor(private dataSource: ApiDataSource) {
+    this.getAllTodos();
+  }
+
+  getAllTodos(): void {
     this.dataSource.getAll().subscribe((data) => (this.todos = data));
   }
 
+  sortTodos(s: string, d: boolean = false) {
+    this.todos = this.sort(s, d);
+  }
+
   getTodos(): Todo[] {
-    return this.todos;
+    return this.todos.filter((item) => !item.done);
+  }
+
+  getCompleted(): Todo[] {
+    return this.todos.filter((item) => item.done);
+  }
+
+  getById(id: string): Todo {
+    return this.todos.find((item) => item._id === id);
+  }
+
+  searchTodos(s: string): void {
+    this.dataSource.search(s).subscribe((data) => (this.todos = data));
   }
 
   addOrUpdateTodo(obj: Todo): void {

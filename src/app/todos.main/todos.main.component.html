@@ -1,0 +1,60 @@
+<todos-header></todos-header> <todos-nav></todos-nav
+><todos-add *ngIf="!showEdit"></todos-add>
+<todos-edit
+  *ngIf="showEdit"
+  [todo]="selectedTodo"
+  (hideEdit)="toggleShowEdit($event)"
+></todos-edit>
+<div>
+  <table class="table table-borderless table-striped">
+    <thead class="bg-info">
+      <tr>
+        <th>#</th>
+        <th>Done</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Created</th>
+        <th>Due Date</th>
+        <th>Days Left</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        todos-single
+        *ngFor="let item of todos; let i = index"
+        [todo]="item"
+        [index]="i + 1"
+        (showEdit)="toggleShowEdit($event)"
+        (sendId)="getSignleTodo($event)"
+      ></tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="completed.length" class="text-center">
+  <h2>Completed</h2>
+  <table class="table table-borderless table-striped">
+    <thead class="bg-info">
+      <tr>
+        <th>#</th>
+        <th>Done</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Created</th>
+        <th>Due Date</th>
+        <th>Days Left</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        todos-single
+        *ngFor="let item of completed; let i = index"
+        [todo]="item"
+        [index]="i + 1"
+      ></tr>
+    </tbody>
+  </table>
+</div>

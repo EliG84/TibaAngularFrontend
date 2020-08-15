@@ -1,7 +1,9 @@
-<todos-header></todos-header> <todos-nav></todos-nav
-><todos-add *ngIf="!showEdit"></todos-add>
+<todos-header></todos-header>
+<todos-add *ngIf="!showEdit" [@inOutAnimation]></todos-add
+><todos-nav></todos-nav>
 <todos-edit
   *ngIf="showEdit"
+  [@inOutAnimation]
   [todo]="selectedTodo"
   (hideEdit)="toggleShowEdit($event)"
 ></todos-edit>
@@ -24,6 +26,7 @@
       <tr
         todos-single
         *ngFor="let item of todos; let i = index"
+        [@slideInOut]
         [todo]="item"
         [index]="i + 1"
         (showEdit)="toggleShowEdit($event)"
@@ -52,6 +55,7 @@
       <tr
         todos-single
         *ngFor="let item of completed; let i = index"
+        [@slideInOut]
         [todo]="item"
         [index]="i + 1"
       ></tr>

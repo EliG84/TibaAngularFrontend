@@ -11,10 +11,19 @@
   color: $textColor;
 }
 
-@mixin btnStyle($color, $width, $height) {
-  width: $witdh;
+@mixin btnStyle($bg, $width, $height) {
+  background: $bg;
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background: darken($bg, 25%);
+  }
+  border-radius: 10px;
+  width: $width;
   height: $height;
-  color: $color;
+  border: none;
 }
 
 $media-expressions: (
@@ -172,5 +181,11 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

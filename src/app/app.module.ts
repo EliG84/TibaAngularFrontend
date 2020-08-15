@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { ApiDataSource } from './model/api.datasource';
@@ -13,7 +15,6 @@ import { TodosEditComponent } from './todos.edit/todos.edit.component';
 import { TodosCompleteComponent } from './todos.complete/todos.complete.component';
 import { TodosNavComponent } from './todos.nav/todos.nav.component';
 import { TodosAddComponent } from './todos.add/todos.add.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TodosCompleteComponent,
     TodosNavComponent,
     TodosAddComponent,
+    MatInputModule,
   ],
   imports: [
     BrowserModule,

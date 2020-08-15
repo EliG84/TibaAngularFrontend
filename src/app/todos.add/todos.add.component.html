@@ -1,15 +1,29 @@
-<div class="jumbotron m-3">
-  <form
-    (ngSubmit)="onClickAdd()"
-    class="d-flex flex-column flex-lg-row justify-content-around form-group"
-  >
-    <input type="text" name="name" [(ngModel)]="todo.name" />
-    <input type="date" name="date" [(ngModel)]="todo.dueDate" />
-    <select name="type" [(ngModel)]="todo.type">
+<div class="addDivMain">
+  <div class="addDivForm">
+    <input
+      class="input-css"
+      type="text"
+      name="name"
+      [(ngModel)]="todo.name"
+      placeholder="Todo or Not Todo.."
+    />
+    <input
+      class="input-css"
+      type="date"
+      name="date"
+      [(ngModel)]="todo.dueDate"
+    />
+    <select class="select-css" name="type" [(ngModel)]="todo.type">
+      <option value="undefined" disabled selected>Todo Type</option>
       <option value="home">Home</option>
       <option value="Education">Education</option>
       <option value="Sport">Sport</option>
     </select>
-    <input type="submit" />
-  </form>
+  </div>
+  <div class="addDivBtn">
+    <button class="addBtnAdd" (click)="onClickAdd()">
+      Add Todo
+    </button>
+    <button class="addBtnDone">Im Done</button>
+  </div>
 </div>

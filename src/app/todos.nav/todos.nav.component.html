@@ -1,16 +1,17 @@
-<div class="d-flex flex-column flex-lg-row justify-content-around">
+<div class="navDiv">
   <input
+    class="input-css"
     type="text"
     placeholder="Search..."
     [(ngModel)]="searchInput"
     (input)="onInputSearch()"
   />
   <select
-    class="form-control col-2"
+    class="select-css"
     [(ngModel)]="sortByInput"
     (change)="onChangeSort()"
   >
-    <option [ngValue]="defaulSelected" [disabled]="true">Sort By</option>
+    <option value="undefined" disabled selected>Sort By</option>
     <option value="name">Name</option>
     <option value="daysLeft">Days Left</option>
     <option value="type">Type</option>

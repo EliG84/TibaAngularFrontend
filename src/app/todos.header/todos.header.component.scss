@@ -1,0 +1,18 @@
+@import "../../styles.scss";
+$breakpoints: (
+  phone: 640px,
+  tablet: 768px,
+  desktop: 1024px,
+) !default;
+
+// $direction, $justify, $align, $bgcolor, $height, $textColor
+
+.headerDiv {
+  @include divFlex(row, center, center, #cffffe, 10vh, rgb(80, 39, 39));
+}
+
+@include media("<=phone") {
+  .headerDiv {
+    @include divFlex(row, center, center, #cffffe, 10vh, rgb(18, 63, 18));
+  }
+}

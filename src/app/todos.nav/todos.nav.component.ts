@@ -9,7 +9,7 @@ import { DataRepository } from '../model/repository.service';
 export class TodosNavComponent implements OnInit {
   searchInput: string;
   sortByInput: string;
-  defaulSelected = 'Sort By';
+
   constructor(private service: DataRepository) {}
 
   onChangeSort() {

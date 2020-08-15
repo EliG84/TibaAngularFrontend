@@ -1,0 +1,47 @@
+@import "../../styles.scss";
+@import "./input";
+@import "./select";
+
+$breakpoints: (
+  phone: 640px,
+  tablet: 768px,
+  desktop: 1024px,
+) !default;
+
+// $direction, $justify, $align, $bgcolor, $height, $textColor
+
+.addDivMain {
+  @include divFlex(
+    column,
+    space-around,
+    center,
+    #fce2ce,
+    20vh,
+    rgb(80, 39, 39)
+  );
+  margin: 1em 0 0;
+  .addDivForm {
+    @include divFlex(row, space-around, center, #e4c5ad, 100%, black);
+    width: 100%;
+  }
+  .addDivBtn {
+    @include divFlex(row, space-around, center, #e4c5ad, 100%, black);
+    width: 100%;
+  }
+}
+
+@include media("<=phone") {
+  .addDivMain {
+    @include divFlex(row, center, center, #e4c5ad, 20vh, rgb(18, 63, 18));
+    margin: 1em 0 0;
+    padding: 0;
+    .addDivForm {
+      @include divFlex(column, space-around, center, #e4c5ad, 100%, black);
+      width: 50%;
+    }
+    .addDivBtn {
+      @include divFlex(column, space-around, center, #e4c5ad, 100%, black);
+      width: 50%;
+    }
+  }
+}

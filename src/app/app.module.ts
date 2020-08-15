@@ -13,6 +13,7 @@ import { TodosEditComponent } from './todos.edit/todos.edit.component';
 import { TodosCompleteComponent } from './todos.complete/todos.complete.component';
 import { TodosNavComponent } from './todos.nav/todos.nav.component';
 import { TodosAddComponent } from './todos.add/todos.add.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,13 @@ import { TodosAddComponent } from './todos.add/todos.add.component';
     TodosNavComponent,
     TodosAddComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+  ],
   providers: [ApiDataSource, DataRepository],
   bootstrap: [AppComponent],
 })

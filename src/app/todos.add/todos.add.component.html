@@ -24,6 +24,8 @@
     <button class="addBtnAdd shadow-sm" (click)="onClickAdd()">
       Add Todo
     </button>
-    <button class="addBtnDone shadow-sm">Im Done</button>
+    <button class="addBtnDone shadow-sm" (click)="onClickDone()">
+      {{ doneBtnText }}
+    </button>
   </div>
 </div>

@@ -1,64 +1,35 @@
 <todos-header></todos-header>
-<todos-add *ngIf="!showEdit" [@inOutAnimation]></todos-add
-><todos-nav></todos-nav>
-<todos-edit
-  *ngIf="showEdit"
+<todos-add
   [@inOutAnimation]
-  [todo]="selectedTodo"
-  (hideEdit)="toggleShowEdit($event)"
-></todos-edit>
-<div>
-  <table class="table table-borderless table-striped">
-    <thead class="bg-info">
-      <tr>
-        <th>#</th>
-        <th>Done</th>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Created</th>
-        <th>Due Date</th>
-        <th>Days Left</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        todos-single
-        *ngFor="let item of todos; let i = index"
-        [@slideInOut]
-        [todo]="item"
-        [index]="i + 1"
-        (showEdit)="toggleShowEdit($event)"
-        (sendId)="getSignleTodo($event)"
-      ></tr>
-    </tbody>
-  </table>
-</div>
-<div *ngIf="completed.length" class="text-center">
-  <h2>Completed</h2>
-  <table class="table table-borderless table-striped">
-    <thead class="bg-info">
-      <tr>
-        <th>#</th>
-        <th>Done</th>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Created</th>
-        <th>Due Date</th>
-        <th>Days Left</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        todos-single
-        *ngFor="let item of completed; let i = index"
-        [@slideInOut]
-        [todo]="item"
-        [index]="i + 1"
-      ></tr>
-    </tbody>
-  </table>
+  [showDone]="showCompleted"
+  (toggleDone)="toggleComplete($event)"
+></todos-add>
+<todos-nav *ngIf="todos.length" [@inOutAnimation]></todos-nav>
+<div class="d-flex flex-column text-center">
+  <h2 *ngIf="todos.length" class="mt-2">Just Do It</h2>
+  <div *ngIf="!todos.length">
+    <br />
+    <h2>Nothing to do, use the form above to enter a new todo!</h2>
+    <br />
+  </div>
+  <div class="divMainIncomplete">
+    <todos-single
+      *ngFor="let item of todos"
+      [todo]="item"
+      (sendId)="getSignleTodo($event)"
+    ></todos-single>
+  </div>
+  <h2 *ngIf="showCompleted" [@inOutAnimation] class="mt-2">Done and Dusted</h2>
+  <div *ngIf="showCompleted && !completed.length">
+    <br />
+    <h2>Nothing done yet!</h2>
+    <br />
+  </div>
+  <div
+    *ngIf="showCompleted && completed.length"
+    class="divMainComplete"
+    [@inOutAnimation]
+  >
+    <todos-single *ngFor="let item of completed" [todo]="item"></todos-single>
+  </div>
 </div>

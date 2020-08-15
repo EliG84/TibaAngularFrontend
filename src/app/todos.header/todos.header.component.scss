@@ -9,6 +9,8 @@ $breakpoints: (
 
 .headerDiv {
   @include divFlex(row, center, center, #cffffe, 10vh, rgb(80, 39, 39));
+  margin: 1em 0 1em 0;
+  border-radius: 10px;
 }
 
 @include media("<=phone") {

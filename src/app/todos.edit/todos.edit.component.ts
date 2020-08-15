@@ -18,6 +18,7 @@ export class TodosEditComponent implements OnInit {
   onClickSave() {
     this.todo.dueDate = new Date(this.todo.date).getTime();
     this.service.addOrUpdateTodo(this.todo);
+    this.hideEdit.emit(false);
   }
 
   onClickCancel() {

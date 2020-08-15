@@ -14,16 +14,6 @@ import {
   templateUrl: './todos.main.component.html',
   styleUrls: ['./todos.main.component.scss'],
   animations: [
-    // trigger('inOutAnimation', [
-    //   transition(':enter', [
-    //     style({ height: 0, opacity: 0 }),
-    //     animate('1s ease-out', style({ height: 50, opacity: 1 })),
-    //   ]),
-    //   transition(':leave', [
-    //     style({ height: 50, opacity: 1 }),
-    //     animate('1s ease-in', style({ height: 0, opacity: 0 })),
-    //   ]),
-    // ]),
     trigger('inOutAnimation', [
       state('true', style({ opacity: 1, color: 'red' })),
       state('void', style({ opacity: 0, color: 'blue' })),
@@ -33,17 +23,17 @@ import {
     trigger('slideInOut', [
       transition(':enter', [
         style({ transform: 'translateX(-100%)' }),
-        animate('200ms ease-in', style({ transform: 'translateX(0%)' })),
+        animate('500ms ease-in', style({ transform: 'translateX(0%)' })),
       ]),
       transition(':leave', [
-        animate('200ms ease-in', style({ transform: 'translateX(-100%)' })),
+        animate('500ms ease-in', style({ transform: 'translateX(-100%)' })),
       ]),
     ]),
   ],
 })
 export class TodosMainComponent implements OnInit {
-  showEdit: boolean = false;
   selectedTodo: Todo;
+  showCompleted: boolean = false;
 
   constructor(private service: DataRepository) {}
 
@@ -57,14 +47,14 @@ export class TodosMainComponent implements OnInit {
     return this.service.getCompleted();
   }
 
-  toggleShowEdit(args: boolean) {
-    this.showEdit = args;
-  }
-
   getSignleTodo(id: string) {
     this.selectedTodo = this.service.getById(id);
     this.selectedTodo.date = new Date(this.selectedTodo.dueDate)
       .toISOString()
       .slice(0, 10);
+  }
+
+  toggleComplete(args: boolean) {
+    this.showCompleted = args;
   }
 }

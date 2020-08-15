@@ -3,7 +3,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule, MatInput } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AppComponent } from './app.component';
 import { ApiDataSource } from './model/api.datasource';
@@ -26,7 +31,6 @@ import { TodosAddComponent } from './todos.add/todos.add.component';
     TodosCompleteComponent,
     TodosNavComponent,
     TodosAddComponent,
-    MatInputModule,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +38,12 @@ import { TodosAddComponent } from './todos.add/todos.add.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [ApiDataSource, DataRepository],
   bootstrap: [AppComponent],

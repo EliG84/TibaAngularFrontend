@@ -3,7 +3,7 @@ import { Todo } from '../model/todo.model';
 import { DataRepository } from '../model/repository.service';
 
 @Component({
-  selector: '[todos-single]',
+  selector: 'todos-single',
   templateUrl: './todos.single.component.html',
   styleUrls: ['./todos.single.component.scss'],
 })
@@ -11,15 +11,18 @@ export class TodosSingleComponent implements OnInit {
   @Input() todo: Todo;
   @Input() index: Number;
   @Output() sendId: EventEmitter<string> = new EventEmitter<string>();
-  @Output() showEdit: EventEmitter<boolean> = new EventEmitter<boolean>();
+  markAs: string;
+  showEdit: boolean = false;
 
   constructor(private service: DataRepository) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.markAs = this.todo.done ? 'Not Done' : 'Done';
+  }
 
   onClickEdit() {
     this.sendId.emit(this.todo._id);
-    this.showEdit.emit(true);
+    this.showEdit = true;
   }
 
   onClickDelete(id) {
@@ -27,6 +30,11 @@ export class TodosSingleComponent implements OnInit {
   }
 
   onClickDone() {
+    this.todo.done = !this.todo.done;
     this.service.addOrUpdateTodo(this.todo);
+  }
+
+  toggleShowEdit(args: boolean) {
+    this.showEdit = args;
   }
 }

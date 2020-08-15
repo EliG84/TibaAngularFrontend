@@ -9,6 +9,7 @@
   flex-direction: $direction;
   background-color: $bgcolor;
   color: $textColor;
+  border-radius: 10px;
 }
 
 @mixin btnStyle($bg, $width, $height) {

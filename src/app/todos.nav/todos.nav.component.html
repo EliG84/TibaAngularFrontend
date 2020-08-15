@@ -1,16 +1,12 @@
 <div class="navDiv">
   <input
-    class="input-css"
+    class="inputNav"
     type="text"
     placeholder="Search..."
     [(ngModel)]="searchInput"
     (input)="onInputSearch()"
   />
-  <select
-    class="select-css"
-    [(ngModel)]="sortByInput"
-    (change)="onChangeSort()"
-  >
+  <select class="selectNav" [(ngModel)]="sortByInput" (change)="onChangeSort()">
     <option value="undefined" disabled selected>Sort By</option>
     <option value="name">Name</option>
     <option value="daysLeft">Days Left</option>

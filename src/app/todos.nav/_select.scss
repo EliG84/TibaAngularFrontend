@@ -8,7 +8,7 @@ $breakpoints: (
   width: $size;
 }
 
-.select-css {
+.selectNav {
   @include widthChange(30%);
   @include media("<=phone") {
     @include widthChange(90%);
@@ -36,19 +36,19 @@ $breakpoints: (
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
 }
-.select-css::-ms-expand {
+.selectNav::-ms-expand {
   display: none;
 }
-.select-css:hover {
+.selectNav:hover {
   border-color: #888;
 }
-.select-css:focus {
+.selectNav:focus {
   border-color: #aaa;
   box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
   box-shadow: 0 0 0 3px -moz-mac-focusring;
   color: #222;
   outline: none;
 }
-.select-css option {
+.selectNav option {
   font-weight: normal;
 }

@@ -8,7 +8,7 @@ $breakpoints: (
   width: $size;
 }
 
-.input-css {
+.inputNav {
   @include widthChange(30%);
   @include media("<=phone") {
     @include widthChange(90%);
@@ -30,19 +30,16 @@ $breakpoints: (
   -webkit-appearance: none;
   appearance: none;
 }
-.input-css::-ms-expand {
+.inputNav::-ms-expand {
   display: none;
 }
-.input-css:hover {
+.inputNav:hover {
   border-color: #888;
 }
-.input-css:focus {
+.inputNav:focus {
   border-color: #aaa;
   box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
   box-shadow: 0 0 0 3px -moz-mac-focusring;
   color: #222;
   outline: none;
-}
-.input-css option {
-  font-weight: normal;
 }

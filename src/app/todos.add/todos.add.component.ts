@@ -28,6 +28,14 @@ export class TodosAddComponent implements OnInit, OnChanges {
 
   constructor(private service: DataRepository) {}
 
+  ngOnInit(): void {
+    this.doneBtnText = this.showDone ? 'Hide Done' : 'Show Done';
+  }
+
+  ngOnChanges() {
+    this.doneBtnText = this.showDone ? 'Hide Done' : 'Show Done';
+  }
+
   onClickAdd() {
     this.todo.dueDate = new Date(this.todo.dueDate).getTime();
     this.service.addOrUpdateTodo(this.todo);
@@ -36,13 +44,5 @@ export class TodosAddComponent implements OnInit, OnChanges {
 
   onClickDone() {
     this.toggleDone.emit(!this.showDone);
-  }
-
-  ngOnInit(): void {
-    this.doneBtnText = this.showDone ? 'Hide Done' : 'Show Done';
-  }
-
-  ngOnChanges() {
-    this.doneBtnText = this.showDone ? 'Hide Done' : 'Show Done';
   }
 }

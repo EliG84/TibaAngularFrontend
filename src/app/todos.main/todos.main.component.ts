@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { DataRepository } from 'src/app/model/repository.service';
 import { Todo } from '../model/todo.model';
+import calcDays from '../helper/helper.functions.js';
 import {
   trigger,
   state,
@@ -34,10 +35,18 @@ import {
 export class TodosMainComponent implements OnInit {
   selectedTodo: Todo;
   showCompleted: boolean = false;
+  searching: boolean = false;
 
   constructor(private service: DataRepository) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.todos.map((item) => {
+      item.daysLeft = calcDays(item.dueDate);
+    });
+    this.completed.map((item) => {
+      item.daysLeft = calcDays(item.dueDate);
+    });
+  }
 
   get todos(): Todo[] {
     return this.service.getTodos();
@@ -56,5 +65,9 @@ export class TodosMainComponent implements OnInit {
 
   toggleComplete(args: boolean) {
     this.showCompleted = args;
+  }
+
+  toggleSearching(args: boolean) {
+    this.searching = args;
   }
 }

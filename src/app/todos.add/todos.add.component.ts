@@ -7,6 +7,7 @@ import {
   OnChanges,
 } from '@angular/core';
 import { Todo } from '../model/todo.model';
+import caldDays from '../helper/helper.functions';
 import { DataRepository } from '../model/repository.service';
 import {
   Validators,
@@ -37,7 +38,9 @@ export class TodosAddComponent implements OnInit, OnChanges {
   }
 
   onClickAdd() {
-    this.todo.dueDate = new Date(this.todo.dueDate).getTime();
+    this.todo._id = null;
+    this.todo.created = new Date().toLocaleString().slice(0, 9);
+    this.todo.daysLeft = caldDays(this.todo.dueDate);
     this.service.addOrUpdateTodo(this.todo);
     this.todo = {};
   }

@@ -5,11 +5,16 @@ import { Todo } from './todo.model';
 
 @Injectable()
 export class ApiDataSource {
-  private allUrl: string = 'http://localhost:3001/todos/all';
-  private singleUrl: string = 'http://localhost:3001/todos/single/';
-  private addUpdateUrl: string = 'http://localhost:3001/todos/addOrUpdate';
-  private deleteUrl: string = 'http://localhost:3001/todos/delete/';
-  private searchUrl: string = 'http://localhost:3001/todos/search/';
+  private allUrl: string =
+    'https://tibatodnetcoreapi.herokuapp.com/api/Todos/All';
+  private singleUrl: string =
+    'https://tibatodnetcoreapi.herokuapp.com/api/Todos/Single/';
+  private addUpdateUrl: string =
+    'https://tibatodnetcoreapi.herokuapp.com/api/Todos/AddOrUpdate';
+  private deleteUrl: string =
+    'https://tibatodnetcoreapi.herokuapp.com/api/Todos/Delete/';
+  private searchUrl: string =
+    'https://tibatodnetcoreapi.herokuapp.com/api/Todos/Search/';
 
   constructor(private http: HttpClient) {}
 

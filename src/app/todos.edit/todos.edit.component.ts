@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../model/todo.model';
+import calcDays from '../helper/helper.functions';
 import { DataRepository } from '../model/repository.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class TodosEditComponent implements OnInit {
   ngOnInit(): void {}
 
   onClickSave() {
-    this.todo.dueDate = new Date(this.todo.date).getTime();
+    // this.todo.dueDate = new Date(this.todo.date).getTime();
+    this.todo.daysLeft = calcDays(this.todo.dueDate);
     this.service.addOrUpdateTodo(this.todo);
     this.hideEdit.emit(false);
   }

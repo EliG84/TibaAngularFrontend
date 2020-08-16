@@ -17,7 +17,6 @@ import { TodosMainComponent } from './todos.main/todos.main.component';
 import { TodosHeaderComponent } from './todos.header/todos.header.component';
 import { TodosSingleComponent } from './todos.single/todos.single.component';
 import { TodosEditComponent } from './todos.edit/todos.edit.component';
-import { TodosCompleteComponent } from './todos.complete/todos.complete.component';
 import { TodosNavComponent } from './todos.nav/todos.nav.component';
 import { TodosAddComponent } from './todos.add/todos.add.component';
 
@@ -28,7 +27,6 @@ import { TodosAddComponent } from './todos.add/todos.add.component';
     TodosHeaderComponent,
     TodosSingleComponent,
     TodosEditComponent,
-    TodosCompleteComponent,
     TodosNavComponent,
     TodosAddComponent,
   ],

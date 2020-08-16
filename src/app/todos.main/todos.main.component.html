@@ -4,12 +4,21 @@
   [showDone]="showCompleted"
   (toggleDone)="toggleComplete($event)"
 ></todos-add>
-<todos-nav *ngIf="todos.length" [@inOutAnimation]></todos-nav>
+<todos-nav
+  *ngIf="todos.length || searching"
+  [@inOutAnimation]
+  (isSearching)="toggleSearching($event)"
+></todos-nav>
 <div class="d-flex flex-column text-center">
   <h2 *ngIf="todos.length" class="mt-2">Just Do It</h2>
-  <div *ngIf="!todos.length">
+  <div *ngIf="!todos.length && !searching">
     <br />
     <h2>Nothing to do, use the form above to enter a new todo!</h2>
+    <br />
+  </div>
+  <div *ngIf="!todos.length && searching">
+    <br />
+    <h2>Nothing Found, Try Searching again!</h2>
     <br />
   </div>
   <div class="divMainIncomplete">
@@ -19,8 +28,14 @@
       (sendId)="getSignleTodo($event)"
     ></todos-single>
   </div>
-  <h2 *ngIf="showCompleted" [@inOutAnimation] class="mt-2">Done and Dusted</h2>
-  <div *ngIf="showCompleted && !completed.length">
+  <h2
+    *ngIf="showCompleted && !searching && todos.length"
+    [@inOutAnimation]
+    class="mt-2"
+  >
+    Done and Dusted
+  </h2>
+  <div *ngIf="showCompleted && !searching && !completed.length">
     <br />
     <h2>Nothing done yet!</h2>
     <br />

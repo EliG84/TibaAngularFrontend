@@ -46,4 +46,15 @@ export class TodosSingleComponent implements OnInit {
     };
     return style;
   }
+
+  formatDaysLeft(): string {
+    switch (true) {
+      case this.todo.daysLeft < 0:
+        return 'Overdue!';
+      case this.todo.daysLeft === 0:
+        return 'Today!';
+      default:
+        return `Days Left: ${this.todo.daysLeft}`;
+    }
+  }
 }

@@ -41,6 +41,7 @@ export class TodosAddComponent implements OnInit, OnChanges {
       this.todo.name === undefined ||
       this.todo.name.length < 4 ||
       this.todo.dueDate === undefined ||
+      caldDays(this.todo.dueDate) < 0 ||
       this.todo.type === undefined
     ) {
       this.isEmpty.emit(true);

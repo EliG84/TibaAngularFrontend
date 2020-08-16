@@ -6,14 +6,21 @@
       name="name"
       [(ngModel)]="todo.name"
       placeholder="Todo or Not Todo.."
+      (input)="onInputTodo()"
     />
     <input
       class="input-css"
       type="date"
       name="date"
       [(ngModel)]="todo.dueDate"
+      (input)="onInputTodo()"
     />
-    <select class="select-css" name="type" [(ngModel)]="todo.type">
+    <select
+      class="select-css"
+      name="type"
+      [(ngModel)]="todo.type"
+      (change)="onInputTodo()"
+    >
       <option value="undefined" disabled selected>Todo Type</option>
       <option value="home">Home</option>
       <option value="Education">Education</option>

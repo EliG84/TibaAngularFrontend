@@ -36,6 +36,7 @@ export class TodosMainComponent implements OnInit {
   selectedTodo: Todo;
   showCompleted: boolean = false;
   searching: boolean = false;
+  checkEmptyTodoForm: boolean = false;
 
   constructor(private service: DataRepository) {}
 
@@ -69,5 +70,9 @@ export class TodosMainComponent implements OnInit {
 
   toggleSearching(args: boolean) {
     this.searching = args;
+  }
+
+  toggleCheckForm(args: boolean) {
+    this.checkEmptyTodoForm = args;
   }
 }

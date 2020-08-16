@@ -19,6 +19,7 @@ import { TodosSingleComponent } from './todos.single/todos.single.component';
 import { TodosEditComponent } from './todos.edit/todos.edit.component';
 import { TodosNavComponent } from './todos.nav/todos.nav.component';
 import { TodosAddComponent } from './todos.add/todos.add.component';
+import { TodoNameFormaterPipe } from './helper/todoFormater.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TodosAddComponent } from './todos.add/todos.add.component';
     TodosEditComponent,
     TodosNavComponent,
     TodosAddComponent,
+    TodoNameFormaterPipe,
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,14 @@
 <todos-header></todos-header>
+<div class="text-center text-danger font-weight-bold">
+  <p *ngIf="checkEmptyTodoForm" [@inOutAnimation]>
+    Please fill all the fields and a todo longer than 4 characters.
+  </p>
+</div>
 <todos-add
   [@inOutAnimation]
   [showDone]="showCompleted"
   (toggleDone)="toggleComplete($event)"
+  (isEmpty)="toggleCheckForm($event)"
 ></todos-add>
 <todos-nav
   *ngIf="todos.length || searching"
@@ -23,7 +29,8 @@
   </div>
   <div class="divMainIncomplete">
     <todos-single
-      *ngFor="let item of todos"
+      *ngFor="let item of todos; let i = index"
+      [index]="i"
       [todo]="item"
       (sendId)="getSignleTodo($event)"
     ></todos-single>
@@ -45,6 +52,10 @@
     class="divMainComplete"
     [@inOutAnimation]
   >
-    <todos-single *ngFor="let item of completed" [todo]="item"></todos-single>
+    <todos-single
+      *ngFor="let item of completed; let i = index"
+      [index]="i"
+      [todo]="item"
+    ></todos-single>
   </div>
 </div>

@@ -1,7 +1,9 @@
 <mat-accordion *ngIf="!showEdit">
   <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <p>{{ todo.name }}</p>
+    <mat-expansion-panel-header [ngStyle]="calcStyle()">
+      <p [ngStyle]="{ fontSize: '2em', fontWeith: 'bold', text: 'center' }">
+        {{ todo.name | youTypeIFix }}
+      </p>
     </mat-expansion-panel-header>
     <div class="row justify-content-around">
       <h4 class="font-italic font-weight-bolder">

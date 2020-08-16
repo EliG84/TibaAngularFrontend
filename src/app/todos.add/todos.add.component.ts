@@ -9,12 +9,6 @@ import {
 import { Todo } from '../model/todo.model';
 import caldDays from '../helper/helper.functions';
 import { DataRepository } from '../model/repository.service';
-import {
-  Validators,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-} from '@angular/forms';
 
 @Component({
   selector: 'todos-add',
@@ -25,6 +19,7 @@ export class TodosAddComponent implements OnInit, OnChanges {
   todo: Todo = {};
   @Input() showDone: boolean;
   @Output() toggleDone: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() isEmpty: EventEmitter<boolean> = new EventEmitter<boolean>();
   doneBtnText: string;
 
   constructor(private service: DataRepository) {}
@@ -37,12 +32,26 @@ export class TodosAddComponent implements OnInit, OnChanges {
     this.doneBtnText = this.showDone ? 'Hide Done' : 'Show Done';
   }
 
+  onInputTodo() {
+    this.isEmpty.emit(false);
+  }
+
   onClickAdd() {
-    this.todo._id = null;
-    this.todo.created = new Date().toLocaleString().slice(0, 9);
-    this.todo.daysLeft = caldDays(this.todo.dueDate);
-    this.service.addOrUpdateTodo(this.todo);
-    this.todo = {};
+    if (
+      this.todo.name === undefined ||
+      this.todo.name.length < 4 ||
+      this.todo.dueDate === undefined ||
+      this.todo.type === undefined
+    ) {
+      this.isEmpty.emit(true);
+    } else {
+      this.isEmpty.emit(false);
+      this.todo._id = null;
+      this.todo.created = new Date().toLocaleString().slice(0, 9);
+      this.todo.daysLeft = caldDays(this.todo.dueDate);
+      this.service.addOrUpdateTodo(this.todo);
+      this.todo = {};
+    }
   }
 
   onClickDone() {

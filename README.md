@@ -3,4 +3,4 @@
 about </br>
 This is a student project done as part of a job application for <a href="https://tibaparking.com/">Tiba Parking Systems</a> </br>
 
-demo url: https://tida-todolist-eli.netlify.app/
+demo url: https://tiba-todolist-eli.netlify.app/
